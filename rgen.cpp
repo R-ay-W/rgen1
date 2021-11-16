@@ -78,8 +78,8 @@ bool TwoLinesOverlap(int x0, int y0, int x1, int y1, int x2, int y2, int x3, int
 			float d1 = abs(y0 * (x1 - x0) - x0 * (y1 - y0) - y2 * (x3 - x2) + x2 * (y3 - y2)); //??d = abs(c1-c2) / sqrt(a*a+b*b)
 			if (d1 == 0)
 			{//overlap
-				if ((x2 > Minx01&& x2<Maxy01 && y2>Miny01&& y2 < Maxy01) || (x3 > Minx01&& x3<Maxy01 && y3>Miny01&& y3 < Maxy01)
-					|| (x0 > Minx23&& x0<Maxy23 && y0>Miny23&& y0 < Maxy23) || (x1 > Minx23&& x1<Maxy23 && y1>Miny23&& y1 < Maxy23))
+				if ((x2 > Minx01 && x2<Maxy01 && y2>Miny01 && y2 < Maxy01) || (x3 > Minx01 && x3<Maxy01 && y3>Miny01 && y3 < Maxy01)
+					|| (x0 > Minx23 && x0<Maxy23 && y0>Miny23 && y0 < Maxy23) || (x1 > Minx23 && x1<Maxy23 && y1>Miny23 && y1 < Maxy23))
 				{
 					return true;
 				}
@@ -121,11 +121,11 @@ bool is_valid_point(vector <int> point_list, int x, int y) {
 
 }
 
-bool is_overlap(vector <int> point_list,vector< vector<int> > all_points ) {
+bool is_overlap(vector <int> point_list, vector< vector<int> > all_points) {
 	for (int i = 2; i < point_list.size(); i = i + 2) {
 		for (int j = 0; j < all_points.size(); j + 2) {
 			for (int k = 2; k < all_points[j].size(); k + 2) {
-				if (TwoLinesOverlap(point_list[i], point_list[i + 1],point_list[i-2],point_list[i-1],all_points[j][k],all_points[j][k+1],all_points[j][k-2],all_points[j][k-1] )) {
+				if (TwoLinesOverlap(point_list[i], point_list[i + 1], point_list[i - 2], point_list[i - 1], all_points[j][k], all_points[j][k + 1], all_points[j][k - 2], all_points[j][k - 1])) {
 					return true;
 				}
 			}
@@ -200,13 +200,13 @@ int main(int argc, char* argv[]) {
 				x_value = random_num(-range_k, range_k);
 				y_value = random_num(-range_k, range_k);
 
-				if (is_valid_point(point_list, x_value, y_value)&&!is_overlap(point_list,all_points))
+				if (is_valid_point(point_list, x_value, y_value) && !is_overlap(point_list, all_points))
 				{
 					point_list.push_back(x_value);
 					point_list.push_back(y_value);
 
 					try_cnt = 0;
-					
+
 				}
 
 				else
@@ -228,19 +228,19 @@ int main(int argc, char* argv[]) {
 
 			all_points.push_back(point_list);
 
-			cout << "a " << "\"" << street_name << "\" ";
+			cout << "add " << "\"" << street_name << "\" ";
 			for (int i = 0; i <= line_num; i++) {
 				cout << "(" << point_list[i] << "," << point_list[i + 1] << ") ";
 			}
 			cout << endl;
 			cnt++;
 		}
-		cout << "g" << endl;
+		cout << "gg" << endl;
 
 		sleep(wait_num);
 
 		for (int i = 0; i < street_list.size(); i++) {
-			std::cout << "r " << "\"" << street_list[i] << "\"" << std::endl;
+			std::cout << "rm " << "\"" << street_list[i] << "\"" << std::endl;
 		}
 		street_list.clear();
 		cnt = 0;
